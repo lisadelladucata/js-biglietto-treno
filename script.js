@@ -9,20 +9,22 @@
 // Il programma dovrà chiedere all'utente il numero di chilometri che vuole percorrere e l'età del passeggero.
 let kilometres = Number(prompt("quanti chilometri devi percorrere?"))
 let age = Number(prompt("quanti anni hai?"))
+
+//il biglietto costa 0.21€ al kilometro
 const price= 0.21
-const priceUnderage = price - 0.05
-const priceOverage = 0.12
-// prezzo del biglietto in base ai kilometri
-if (kilometres >= 1 && age >= 18 && age < 65){
-    alert(price * kilometres +"€")
-} 
-// prezzo del biglietto se hai meno di 18anni 
+
+//costo del biglietto a prezzo pieno
+let totalPrice = kilometres * price
+
+// prezzo del biglietto se hai meno di 18anni e più di 65anni
 if (age < 18){
-    alert(priceUnderage * kilometres + "€")
-}
-
-// prezzo del biglietto se hai più di 65 anni 
-
-if (age > 65){
-    alert (priceOverage * kilometres + "€")
+    let discount= totalPrice * 0.20
+    let discountPrice = totalPrice - discount
+    alert(`Il prezzo del tuo biglietto è: ${discountPrice.toFixed(2)} € `)
+} else if (age > 65){
+    let discount= totalPrice * 0.40
+    let discountPrice = totalPrice - discount
+    alert(`Il prezzo del tuo biglietto è: ${discountPrice.toFixed(2)} € `)
+} else {
+    alert(`Il prezzo del tuo biglietto è: ${totalPrice.toFixed(2)} € `)
 }
